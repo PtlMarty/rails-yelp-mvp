@@ -1,0 +1,16 @@
+<div class="container text-center d-flex flex-column m-3">
+  <h1>Restaurants#index</h1>
+  <p>Find me in app/views/restaurants/index.html.erb</p>
+  <div class="justify-content-center">
+      <% @restaurants.each do |restaurant| %>
+        <div class="card m-3">
+          <div class="card-body">
+            <%= restaurant.name %>
+            <%= restaurant.address %>
+            <%= restaurant.category %>
+            <%= link_to "Show", restaurant_path(restaurant) %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
