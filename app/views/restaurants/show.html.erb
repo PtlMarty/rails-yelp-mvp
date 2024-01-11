@@ -1,19 +1,25 @@
-<div class="container text-center d-flex">
+<div class="container text-center d-flex m-5">
   <div class="card">
     <div class="card-body">
       <h1><%= @restaurant.name %></h1>
       <p><%= @restaurant.address %></p>
       <p><%= @restaurant.category %></p>
       <p><%= @restaurant.phone_number %></p>
-      <p><strong>Reviews</strong></p>
-      <ul class="list-group">
+      <h4><strong>Reviews</strong></h4>
+      <div class="card-text">
         <% @restaurant.reviews.each do |review| %>
-          <li class="list-group-item"><%= review.content %></li>
+          <p class=""><%= review.content %> <br>
+           <%= review.rating %></p>
         <% end %>
-      </ul>
-
-      <%= link_to "Back", restaurants_path %>
-      <%= link_to "new review", new_restaurant_review_path(@restaurant[:id])%>
+      </div>
+     <div class="form">
+  <%= simple_form_for [@restaurant, @review] do |f|%>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.button :submit %>
+  <% end %>
+</div>
+      <%= link_to "Back", restaurants_path, class:"btn btn-secondary m-3" %>
     </div>
   </div>
 </div>

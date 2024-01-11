@@ -10,15 +10,13 @@ class ReviewsController < ApplicationController
     if @review.save # => true or false
       redirect_to restaurant_path(@restaurant)
     else
-      render :new
+      render "restaurants/show", status: :unprocessable_entity
     end
   end
 
   def new
-    @review = Review.new
-    @restaurant = Restaurant.find(params[:restaurant_id])
-  end
 
+  end
   private
 
   def review_params
